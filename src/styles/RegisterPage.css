@@ -1,0 +1,83 @@
+.register-main {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+.register-article {
+  min-width: 200px;
+  max-width: 300px;
+  padding: 1rem;
+  text-align: left;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e0e0e0;
+}
+
+.register-heading {
+  margin-bottom: 1rem;
+}
+
+.register-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.register-subtitle {
+  font-size: 0.7rem;
+  color: #6b7280;
+}
+
+.register-error {
+  font-size: 0.7rem;
+  color: #b91c1c;
+  margin-bottom: 0.6rem;
+  background-color: #fee2e2;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+}
+
+.register-form {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.register-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.register-input {
+  font-size: 0.75rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.4rem;
+  border: 1px solid #d1d5db;
+  width: 100%;
+}
+
+.register-button {
+ font-size: 0.75rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: 0.4rem;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  margin-top: 0.3rem;
+  cursor: pointer;
+}
+
+.login-footer {
+  font-size: 0.75rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.login-footer a {
+  color: #2563eb;
+  text-decoration: underline;
+}
