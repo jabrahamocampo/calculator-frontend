@@ -38,7 +38,8 @@ function DashboardPage() {
           setBalance(res.data.balance);
         } catch (err) {
           if (err.response?.status === 401) {
-            handleExpiredToken();
+            console.log(err.response);
+           // handleExpiredToken();
           }
         } finally {
           setLoading(false);
@@ -47,7 +48,7 @@ function DashboardPage() {
       fetchBalance();
     }
   }, [user]);
-
+/*
   useEffect(() => {
     const fetchOperations = async () => {
       try {
@@ -60,13 +61,13 @@ function DashboardPage() {
       }
     };
     fetchOperations();
-  }, []);
+  }, []);  */
 
   const handleLogout = () => {
     logout();
     navigate("/login");
   };
-
+/*
   const handleExecute = async (e) => {
     e.preventDefault();
     setExecError('');
@@ -91,7 +92,7 @@ function DashboardPage() {
         setExecError(err.response?.data?.error || 'Unexpected error');
       }
     }
-  };
+  };  */
 
   return (
     <div>
