@@ -18,14 +18,19 @@ function DashboardPage() {
   const [operandsInput, setOperandsInput] = useState('');
   const [execResult, setExecResult] = useState(null);
   const [execError, setExecError] = useState('');
-
   const recordsRef = useRef(null);
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
+  
   const fetchRecords = async () => {
     recordsRef.current?.refresh();
   };
-
+  
   const handleExpiredToken = () => {
-    alert("Tu sesión ha expirado. Serás redirigido al inicio de sesión.");
+    alert("Your session has expired. You will be redirected to the login page.");
     logout();
     navigate("/login");
   };
@@ -38,8 +43,7 @@ function DashboardPage() {
           setBalance(res.data.balance);
         } catch (err) {
           if (err.response?.status === 401) {
-            console.log(err.response);
-           // handleExpiredToken();
+            handleExpiredToken();
           }
         } finally {
           setLoading(false);
@@ -56,18 +60,12 @@ function DashboardPage() {
         setOperations(res.data);
       } catch (err) {
         if (err.response?.status === 401) {
-          console.log(err.response);
-         // handleExpiredToken();
+          handleExpiredToken();
         }
       }
     };
     fetchOperations();
-  }, []);  
-
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
+  }, []);
 
   const handleExecute = async (e) => {
     e.preventDefault();
@@ -88,8 +86,7 @@ function DashboardPage() {
       await fetchRecords();
     } catch (err) {
       if (err.response?.status === 401) {
-        console.log(err.response);
-        //handleExpiredToken();
+        handleExpiredToken();
       } else {
         setExecError(err.response?.data?.error || 'Unexpected error');
       }
