@@ -124,10 +124,9 @@ const UserRecordsTable = forwardRef((props, ref) => {
 
   return (
    <div>
-    {records.length > 0 && (
     <div className="records-container">
-     <div className="records-wrapper">
-       <h4>Operations History</h4>
+      <div className="records-wrapper">
+        <h4>Operations History</h4>
 
         {alertMessage && (
           <div className={`alert ${alertType === 'success' ? 'alert-success' : 'alert-error'}`}>
@@ -161,15 +160,23 @@ const UserRecordsTable = forwardRef((props, ref) => {
             ))}
           </thead>
           <tbody>
-            {table.getRowModel().rows.map((row) => (
-              <tr key={row.id}>
-                {row.getVisibleCells().map((cell) => (
-                  <td key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </td>
-                ))}
+            {records.length > 0 ? (
+              table.getRowModel().rows.map((row) => (
+                <tr key={row.id}>
+                  {row.getVisibleCells().map((cell) => (
+                    <td key={cell.id}>
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </td>
+                  ))}
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan={columns.length} style={{ textAlign: 'center', padding: '10px' }}>
+                  No records found
+                </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
 
@@ -187,25 +194,30 @@ const UserRecordsTable = forwardRef((props, ref) => {
           </div>
 
           <div className="action-buttons">
-            
-            <button
-              onClick={handleExport}
-              disabled={loading}
-            >
-              {loading ? 'Exporting...' : 'Export Records to AWS S3'}
-            </button>
+            <div className="tooltip-wrapper">
+              <button
+                onClick={handleExport}
+                disabled={loading}
+              >
+                {loading ? 'Exporting...' : 'Export Records to AWS S3'}
+              </button>
+              <span className="tooltip-icon">?
+                <span className="tooltip-text">
+                  Export your operation history to AWS S3 and get a secure link to download it as a JSON file.
+                </span>
+              </span>
+            </div>
 
             {exportUrl && (
               <button
                 onClick={() => window.open(exportUrl, '_blank', 'noopener,noreferrer')}
               >
-               See AWS S3 Bucket
+                See AWS S3 Bucket
               </button>
             )}
-           </div>      
+          </div>
 
           <div>
-            
             <select
               id="perPageSelect"
               value={perPage}
@@ -221,8 +233,7 @@ const UserRecordsTable = forwardRef((props, ref) => {
         </div>
       </div>
     </div>
-    )}
-   </div>        
+  </div>   
   );
 });
 export default UserRecordsTable;
