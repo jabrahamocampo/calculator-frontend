@@ -49,7 +49,7 @@ function DashboardPage() {
     }
   }, [user]);
 
-/*  useEffect(() => {
+ useEffect(() => {
     const fetchOperations = async () => {
       try {
         const res = await axiosAuth.get(`/operations/list`);
@@ -62,14 +62,14 @@ function DashboardPage() {
       }
     };
     fetchOperations();
-  }, []);  */
+  }, []);  
 
   const handleLogout = () => {
     logout();
     navigate("/login");
   };
 
-/*  const handleExecute = async (e) => {
+  const handleExecute = async (e) => {
     e.preventDefault();
     setExecError('');
     setExecResult(null);
@@ -94,7 +94,7 @@ function DashboardPage() {
         setExecError(err.response?.data?.error || 'Unexpected error');
       }
     }
-  };  */
+  };  
 
   return (
     <div>
@@ -187,7 +187,7 @@ function DashboardPage() {
 
         <section>
           <div id="records">
-         <!--   <UserRecordsTable ref={recordsRef} /> -->
+            <UserRecordsTable ref={recordsRef} /> 
           </div>
         </section>
       </main>
