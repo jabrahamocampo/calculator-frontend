@@ -48,7 +48,7 @@ function DashboardPage() {
       fetchBalance();
     }
   }, [user]);
-/*
+
   useEffect(() => {
     const fetchOperations = async () => {
       try {
@@ -56,18 +56,19 @@ function DashboardPage() {
         setOperations(res.data);
       } catch (err) {
         if (err.response?.status === 401) {
-          handleExpiredToken();
+          console.log(err.response);
+         // handleExpiredToken();
         }
       }
     };
     fetchOperations();
-  }, []);  */
+  }, []);  
 
   const handleLogout = () => {
     logout();
     navigate("/login");
   };
-/*
+
   const handleExecute = async (e) => {
     e.preventDefault();
     setExecError('');
@@ -87,12 +88,13 @@ function DashboardPage() {
       await fetchRecords();
     } catch (err) {
       if (err.response?.status === 401) {
-        handleExpiredToken();
+        console.log(err.response);
+        //handleExpiredToken();
       } else {
         setExecError(err.response?.data?.error || 'Unexpected error');
       }
     }
-  };  */
+  };  
 
   return (
     <div>
