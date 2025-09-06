@@ -12,16 +12,16 @@ export function AuthProvider({ children }) {
         console.log("Token recibido:", token);
         const parts = token.split('.');
         if (parts.length !== 3) {
-          throw new Error("Token JWT inválido: formato incorrecto");
+          throw new Error("Invalid JWT Token: incorrect format");
         }
         const payload = parts[1];
         const decodedPayload = atob(payload);
         const decoded = JSON.parse(decodedPayload);
         setUser({ id: decoded.id, username: decoded.username });
       } catch (error) {
-        console.error("Error al decodificar token:", error);
+        console.error("Error on decode token:", error);
         setUser(null);
-        setToken(''); // Limpiar token inválido
+        setToken(''); // clean invalid token
         localStorage.removeItem('token');
       }
     } else {

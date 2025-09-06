@@ -1,34 +1,9 @@
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import useAxiosAuth from '../hooks/useAxiosAuth';
+import { Link } from 'react-router-dom';
+import useRegisterPage from '../hooks/useRegisterPage';
 import '../styles/RegisterPage.css';
 
 function RegisterPage() {
-  const axiosAuth = useAxiosAuth();
-  const navigate = useNavigate();
-
-  const [form, setForm] = useState({
-    username: '',
-    password: '',
-  });
-
-  const [error, setError] = useState('');
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError('');
-
-    try {
-      await axiosAuth.post('/auth/register', form);
-      navigate('/login');
-    } catch (err) {
-      setError(err.response?.data?.error || 'Unexpected error');
-    }
-  };
+  const { form, error, handleChange, handleSubmit } = useRegisterPage();
 
   return (
     <main className="register-main">
@@ -38,11 +13,11 @@ function RegisterPage() {
           <p className="register-subtitle">Create a new account</p>
         </hgroup>
 
-        {error && <div className="register-error">{error}</div>}
+        {error && <div className="register-error">{error.message || error}</div>}
 
         <form onSubmit={handleSubmit} className="register-form">
           <label className="register-label">
-            Username
+            User name:
             <input
               name="username"
               type="text"
@@ -55,7 +30,7 @@ function RegisterPage() {
           </label>
 
           <label className="register-label">
-            Password
+            Password:
             <input
               name="password"
               type="password"

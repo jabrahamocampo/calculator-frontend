@@ -6,7 +6,6 @@ import DashboardPage from "./pages/DashboardPage.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 
 function App() {
-  console.log("🧠 App.jsx montado");
   return (
     <BrowserRouter>
       <Routes>

@@ -19,7 +19,6 @@ import '../styles/UserRecordsTable.css';
 
 const UserRecordsTable = forwardRef((props, ref) => {
   const { user } = useAuth();
-  console.log('ESTE ES EL USER: ',user);
   const axiosAuth = useAxiosAuth();
   const [records, setRecords] = useState([]);
   const [sorting, setSorting] = useState([]);
@@ -79,7 +78,12 @@ const UserRecordsTable = forwardRef((props, ref) => {
         id: 'actions',
         header: 'Actions',
         cell: ({ row }) => (
-          <button onClick={() => handleDelete(row.original.id)}>Delete</button>
+          <button
+           className="delete-btn" 
+           data-testid={`delete-btn-${row.original.id}`}
+           onClick={() => handleDelete(row.original.id)}>
+           Delete
+          </button>
         ),
       },
     ],
@@ -123,7 +127,7 @@ const UserRecordsTable = forwardRef((props, ref) => {
   }));
 
   return (
-   <div>
+  
     <div className="records-container">
       <div className="records-wrapper">
         <h4>Operations History</h4>
@@ -142,6 +146,7 @@ const UserRecordsTable = forwardRef((props, ref) => {
           className="records-search"
         />
 
+        <div className='records-table-container'>
         <table className="records-table">
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -179,6 +184,7 @@ const UserRecordsTable = forwardRef((props, ref) => {
             )}
           </tbody>
         </table>
+        </div>
 
         <div className="records-pagination">
           <div>
@@ -197,9 +203,9 @@ const UserRecordsTable = forwardRef((props, ref) => {
             <div className="tooltip-wrapper">
               <button
                 onClick={handleExport}
-                disabled={loading}
+                disabled={records.length === 0}
               >
-                {loading ? 'Exporting...' : 'Export Records to AWS S3'}
+                Export Records to AWS S3
               </button>
               <span className="tooltip-icon">?
                 <span className="tooltip-text">
@@ -212,7 +218,7 @@ const UserRecordsTable = forwardRef((props, ref) => {
               <button
                 onClick={() => window.open(exportUrl, '_blank', 'noopener,noreferrer')}
               >
-                See AWS S3 Bucket
+                See AWS S3 Bucket File
               </button>
             )}
           </div>
@@ -233,7 +239,7 @@ const UserRecordsTable = forwardRef((props, ref) => {
         </div>
       </div>
     </div>
-  </div>   
+  
   );
 });
 export default UserRecordsTable;

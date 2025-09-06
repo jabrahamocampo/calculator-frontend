@@ -4,7 +4,6 @@ import RegisterPage from './pages/RegisterPage';
 import Dashboard from './pages/Dashboard';
 
 export default function AppRoutes() {
-  console.log("🚀 routes.jsx ejecutado");
   return (
     <BrowserRouter>
       <Routes>
