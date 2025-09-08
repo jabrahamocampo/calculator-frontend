@@ -70,6 +70,9 @@ React Router for SPA navigation
 Context API for state management
 
 ## Project Architecture 
+
+![Arquitectura](./docs/App-Microservices-Arquitecture.png)
+
 ┌─────────────┐     ┌───────────────┐     ┌──────────────────┐
 │             │     │               │     │                  │
 │   Frontend  │────>│  API Gateway  │────>│  Auth Service    │
