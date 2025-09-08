@@ -82,9 +82,5 @@ https://github.com/jabrahamocampo/calculator-frontend.git
     
 
 ----------------------------------------------------
-## Github workflow actions
-[![Frontend CI](https://github.com/jabrahamocampo/calculator-frontend/actions/workflows/frontend-ci.yml/badge.svg)](https://github.com/jabrahamocampo/calculator-frontend/actions/workflows/frontend-ci.yml)
-[![codecov](https://codecov.io/gh/jabrahamocampo/calculator-frontend/branch/main/graph/badge.svg)](https://codecov.io/gh/jabrahamocampo/calculator-frontend)
-
 
 
