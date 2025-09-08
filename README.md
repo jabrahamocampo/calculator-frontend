@@ -4,6 +4,11 @@ This is the frontend of the Calculator application, built with React.js as a **S
 ## Production URL
 The production application is live at: **https://calculator-seven-wine-91.vercel.app**
 
+## This project qualifies as a Minimum Marketable Product (MMP)
+This project is an MMP because it implements a complete, secure, production-ready microservices system with essential functionality, monitoring, deployment, and a usable frontend — enough to deliver value and validate the product with real users.
+
+Any comment or questions please let me know: jabraham.ocampo@gmail.com
+
 ------------------------------------------------------------------
 ## Features Overview
 ## Frontend (React.js + Vite)
@@ -71,7 +76,7 @@ Context API for state management
 
 ## Project Architecture 
 
-![Arquitectura](./docs/App-Microservices-Arquitecture.png)
+![Project Architecture](.docs/App-Microservices-Arquitecture.png)
 
 ┌─────────────┐     ┌───────────────┐     ┌──────────────────┐
 │             │     │               │     │                  │
